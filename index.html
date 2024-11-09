@@ -70,6 +70,21 @@
             }
         }
 
+             /* Custom CSS for Hover Effect */
+             .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-overlay {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-img-overlay:hover {
+            transform: scale(1.1);
+        }
+
+        
         /* Dark Mode Styles */
         .dark-mode {
             background-color: #282a36;
@@ -117,7 +132,7 @@
 <!-- Header Section -->
 <header class="header d-flex align-items-center mb-4">
     <div class="img-container">
-        <img src="assets/461519639_1054398469492021_1252424130496335956_n.jpg" alt="Profile Picture" />
+        <img src="assets/461519639_1054398469492021_1252424130496335956_n.jpg"  alt="Profile Picture" />
     </div>
     <div class="title-container" style="width: calc(100% - 8rem);">
         <h1 data-en="Trần Anh Khoa" data-jp="トランアンクオア"></h1>
