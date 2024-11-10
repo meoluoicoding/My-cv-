@@ -8,114 +8,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* General Styles */
-        body {
-            background-image: url('https://images.unsplash.com/photo-1506748686214-9ac83d39fa7f?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhY2h8MXx8c2VhdHVyYWwlMjBmb3Jlc3R8ZW58MHx8fHwxNjg2Njg5MTg0&ixlib=rb-1.2.1&q=80&w=1080');
-            background-size: cover;
-            background-position: center;
-            font-family: sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .header {
-            background: linear-gradient(to right, rgba(126, 34, 206, 0.8), rgba(236, 72, 153, 0.8), rgba(220, 38, 38, 0.8));
-            color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            padding: 2rem;
-        }
-
-        .img-container img {
-            width: 6rem;
-            height: 6rem;
-            max-width: 6rem;
-            max-height: 6rem;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-right: 1.5rem;
-        }
-
-        .title-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .title-container h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-        }
-
-        .title-container h2 {
-            font-size: 1.25rem;
-            font-style: italic;
-            color: #fde68a;
-            margin-top: 0.5rem;
-            white-space: nowrap;
-            display: inline-block;
-            animation: scrollText 6s linear infinite;
-        }
-
-        /* Keyframes to create the scrolling effect */
-        @keyframes scrollText {
-            0% {
-                transform: translateX(100%);
-            }
-            50% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-             /* Custom CSS for Hover Effect */
-             .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-img-overlay {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .card-img-overlay:hover {
-            transform: scale(1.1);
-        }
-
-        
-        /* Dark Mode Styles */
-        .dark-mode {
-            background-color: #282a36;
-            color: #f8f8f2;
-        }
-
-        .dark-mode .header {
-            background: linear-gradient(to right, #44475a, #6272a4);
-        }
-
-        /* Override text color in these sections for dark mode */
-        .dark-mode .card.bg-light .card-body,
-        .dark-mode .list-group-item {
-            color: black;
-            background-color: #f8f9fa;
-        }
-
-        /* Progress Bar Styles */
-        .progress {
-            height: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            font-size: 0.875rem;
-            line-height: 1.5rem;
-            text-align: center;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -132,7 +26,7 @@
 <!-- Header Section -->
 <header class="header d-flex align-items-center mb-4">
     <div class="img-container">
-        <img src="assets/461519639_1054398469492021_1252424130496335956_n.jpg"  alt="Profile Picture" />
+        <img src="assets/461519639_1054398469492021_1252424130496335956_n.jpg" alt="Profile Picture" />
     </div>
     <div class="title-container" style="width: calc(100% - 8rem);">
         <h1 data-en="Trần Anh Khoa" data-jp="トランアンクオア"></h1>
@@ -257,104 +151,12 @@
     </div>
 </div>
 
-<!-- Bootstrap JS (necessary for some Bootstrap components) -->
+
+<!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    // Dark Mode Toggle Script with Persistence
-    const toggleButton = document.getElementById('toggleDarkMode');
-    const body = document.body;
-    const darkModeKey = 'darkModeEnabled';
-
-    // Check if dark mode is enabled in localStorage
-    const isDarkMode = localStorage.getItem(darkModeKey) === 'true';
-    if (isDarkMode) {
-        body.classList.add('dark-mode');
-    }
-
-    // Toggle dark mode and save preference to localStorage
-    toggleButton.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        const darkModeEnabled = body.classList.contains('dark-mode');
-        localStorage.setItem(darkModeKey, darkModeEnabled);
-    });
-
-    // Language Toggle Script
-    const toggleLanguageButton = document.getElementById('toggleLanguage');
-    const japaneseVersionKey = 'japaneseVersionEnabled';
-
-    // Function to switch between English and Japanese versions
-    const toggleLanguage = () => {
-        const isJapaneseVersion = body.classList.contains('japanese-version');
-
-        if (isJapaneseVersion) {
-            // Switch to English version
-            body.classList.remove('japanese-version');
-            toggleLanguageButton.textContent = 'Switch to Japanese';
-            translateToEnglish();
-        } else {
-            // Switch to Japanese version
-            body.classList.add('japanese-version');
-            toggleLanguageButton.textContent = 'Switch to English';
-            translateToJapanese();
-        }
-
-        // Save language preference to localStorage
-        localStorage.setItem(japaneseVersionKey, !isJapaneseVersion);
-    };
-
-    // Check if Japanese version is enabled in localStorage
-    const isJapaneseVersionEnabled = localStorage.getItem(japaneseVersionKey) === 'true';
-    if (isJapaneseVersionEnabled) {
-        body.classList.add('japanese-version');
-        toggleLanguageButton.textContent = 'Switch to English';
-        translateToJapanese();
-    }
-
-    // Add event listener to the language toggle button
-    toggleLanguageButton.addEventListener('click', toggleLanguage);
-
-    // Function to translate content to Japanese
-    function translateToJapanese() {
-        // Replace content with Japanese text
-        document.querySelectorAll('[data-en]').forEach(element => {
-            element.textContent = element.getAttribute('data-jp');
-        });
-    }
-
-    // Function to translate content to English
-    function translateToEnglish() {
-        // Replace content with English text
-        document.querySelectorAll('[data-en]').forEach(element => {
-            element.textContent = element.getAttribute('data-en');
-        });
-    }
-
-    // Function to toggle all collapse sections
-    const toggleCollapseAll = () => {
-        const collapses = document.querySelectorAll('.collapse');
-        const isAnyCollapsed = Array.from(collapses).some(collapse => collapse.classList.contains('show'));
-
-        collapses.forEach(collapse => {
-            if (isAnyCollapsed) {
-                collapse.classList.remove('show');
-            } else {
-                collapse.classList.add('show');
-            }
-        });
-    };
-
-    // Example button to trigger toggleCollapseAll function
-    const toggleAllButton = document.createElement('button');
-    toggleAllButton.classList.add('btn', 'btn-primary', 'w-100', 'text-left', 'mb-3');
-    toggleAllButton.innerHTML = '<i class="fas fa-chevron-down"></i> Expand/Collapse All Sections';
-    toggleAllButton.addEventListener('click', toggleCollapseAll);
-
-    // Insert the button before the first section
-    const firstSection = document.querySelector('section');
-    firstSection.parentNode.insertBefore(toggleAllButton, firstSection);
-</script>
+<!-- Custom JS -->
+<script src="index.js"></script>
 
 </body>
 </html>
