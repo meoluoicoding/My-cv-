@@ -7,7 +7,6 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Example CSS */
 body {
     background-color: white;
     color: black;
@@ -27,6 +26,18 @@ body.japanese-version [data-jp] {
     display: block; /* Show Japanese text */
 }
 
+
+/* Only apply dark mode to specific sections, excluding no-dark-mode */
+.dark-mode .dark-mode-section, .dark-mode .dark-mode-content {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .no-dark-mode {
+    background-color: #f8f9fa; /* Certificates section stays light */
+    color: #000000;
+  }
+  
 
 
 .header {
